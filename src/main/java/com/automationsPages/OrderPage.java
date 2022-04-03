@@ -6,31 +6,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.automationWesiteBasePackage.TestBase;
 
-public class ShoppingCartPage extends TestBase{
+public class OrderPage  extends TestBase{
 	
-	public ShoppingCartPage() {
+	public OrderPage () {
 		PageFactory.initElements(wd, this);
 	}
-	
-	@FindBy(id="add_to_cart")
-	WebElement addToMyCart;
-	
-	public OrderPage clickCartOption() {
-		addToMyCart.click();
-	return new OrderPage();
-}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@FindBy(className = "icon-trash" )
 	WebElement deleteCartOption;
 	
@@ -39,7 +20,7 @@ public class ShoppingCartPage extends TestBase{
 
 	
 	public void clickdeleteCartOption() {
-	deleteCartOption.click();
+		deleteCartOption.click();
 		
 	}
 	
@@ -47,4 +28,6 @@ public class ShoppingCartPage extends TestBase{
 	return ConfirmationMessageText.getText();
 	}
 
+	
+	
 }

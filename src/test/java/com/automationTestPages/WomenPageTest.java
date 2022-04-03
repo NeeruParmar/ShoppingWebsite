@@ -1,7 +1,5 @@
 package com.automationTestPages;
 
-public class MyAccountPageTest {
-	
-	
+public class WomenPageTest {
 
 }
