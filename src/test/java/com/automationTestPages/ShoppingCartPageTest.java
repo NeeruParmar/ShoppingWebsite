@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.automationWesiteBasePackage.TestBase;
+import com.automationsPages.AddressPage;
 import com.automationsPages.HomePage;
 
 import com.automationsPages.MyAccountPage;
@@ -18,31 +19,48 @@ public class ShoppingCartPageTest extends TestBase {
 	ShoppingCartPage shoppingCartPage;
 	WomenPage womenPage;
 	OrderPage orderPage;
+	AddressPage addressPage;
 
 	@BeforeMethod
 	public void setUp() {
 		initialization();
-		HomePage homePage = new HomePage();
-		MyAccountPage myAccountPage = new MyAccountPage();
-		ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-		WomenPage womenPage = new WomenPage();
+		homePage = new HomePage();
 
-		// OrderSummaryPage orderSummaryPage =new OrderSummaryPage();
+		shoppingCartPage = new ShoppingCartPage();
+		orderPage = new OrderPage();
+		addressPage = new AddressPage();
 		homePage.enterLoginEmail(prop.getProperty("email"));
 		homePage.enterLoginPassword(prop.getProperty("password"));
 		myAccountPage = homePage.clickAccSignIn();
+
 	}
 
 	@Test
-	public void verifyCartEmpty() {
+
+	public void verifyCartSummaryPageAfterContiueShopping() {
+
 		womenPage = myAccountPage.clickWomenPage();
 		womenPage.clickQuickView();
 		orderPage = shoppingCartPage.clickCartOption();
+		addressPage = orderPage.clickCheckOut();
+		shoppingCartPage = addressPage.clickContinueShopping();
+		String ShoppingCartMessage = shoppingCartPage.getVeriyCartMessage();
+		Assert.assertEquals(ShoppingCartMessage, prop.getProperty("ShoppingCartMessage"));
+
+	}
+
+	@Test
+
+	public void verifyCartEmpty() {
+
+		womenPage = myAccountPage.clickWomenPage();
+		womenPage.clickQuickView();
+		orderPage = shoppingCartPage.clickCartOption();
+
 		orderPage.clickdeleteCartOption();
 
-		String cartEmptyConfirmation = shoppingCartPage.getTextFromMessage();
-		Assert.assertEquals(cartEmptyConfirmation, prop.get("ConfirmationMessageText"),
-				"no message cart still have itms");
+		String cartEmptyConfirmation = orderPage.getDeletedMessageText();
+		Assert.assertEquals(cartEmptyConfirmation, prop.get("ConfirmationMessageText"));
 
 	}
 
