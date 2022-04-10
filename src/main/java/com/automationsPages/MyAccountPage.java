@@ -7,15 +7,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.automationWebsite.Utilis.Utilis;
+import com.automationWebsite.Utils.Utilis;
 import com.automationWesiteBasePackage.TestBase;
 
 public class MyAccountPage extends TestBase {
-	Actions action;
 
 	public MyAccountPage() {
 		PageFactory.initElements(wd, this);
-		action = new Actions(wd);
+		waitForDocumentCompleteState(5);
+
 	}
 
 	@FindBy(css = "a[class='account']")
@@ -30,7 +30,8 @@ public class MyAccountPage extends TestBase {
 	}
 
 	public WomenPage clickWomenPage() {
-		selectWomenTab.click();
+		Utilis.clickOnElement(selectWomenTab);
+		// selectWomenTab.click();
 		return new WomenPage();
 
 	}

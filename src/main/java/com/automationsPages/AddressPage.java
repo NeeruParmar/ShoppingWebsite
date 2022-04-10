@@ -10,6 +10,7 @@ public class AddressPage extends TestBase {
 	public AddressPage() {
 
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(5);
 	}
 
 	@FindBy(css = "[title='Previous']")

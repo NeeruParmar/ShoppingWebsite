@@ -4,13 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.automationWebsite.Utilis.Utilis;
+import com.automationWebsite.Utils.Utilis;
 import com.automationWesiteBasePackage.TestBase;
 
 public class ShoppingCartPage extends TestBase {
 
 	public ShoppingCartPage() {
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(5);
 	}
 
 	@FindBy(id = "add_to_cart")

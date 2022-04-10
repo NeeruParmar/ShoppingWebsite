@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.internal.Utils;
 
-import com.automationWebsite.Utilis.Utilis;
+import com.automationWebsite.Utils.Utilis;
 import com.automationWesiteBasePackage.TestBase;
 
 public class HomePage extends TestBase {
@@ -47,5 +47,4 @@ public class HomePage extends TestBase {
 
 		return Utilis.getTextFromWebelement(loginErrorMessage);
 	}
-
 }

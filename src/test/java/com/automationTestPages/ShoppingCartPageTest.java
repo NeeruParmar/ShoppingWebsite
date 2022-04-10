@@ -3,6 +3,7 @@ package com.automationTestPages;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.automationWesiteBasePackage.TestBase;
 import com.automationsPages.AddressPage;
@@ -20,11 +21,13 @@ public class ShoppingCartPageTest extends TestBase {
 	WomenPage womenPage;
 	OrderPage orderPage;
 	AddressPage addressPage;
+	SoftAssert sf;
 
 	@BeforeMethod
 	public void setUp() {
 		initialization();
 		homePage = new HomePage();
+		sf = new SoftAssert();
 
 		shoppingCartPage = new ShoppingCartPage();
 		orderPage = new OrderPage();
@@ -45,8 +48,8 @@ public class ShoppingCartPageTest extends TestBase {
 		addressPage = orderPage.clickCheckOut();
 		shoppingCartPage = addressPage.clickContinueShopping();
 		String ShoppingCartMessage = shoppingCartPage.getVeriyCartMessage();
-		Assert.assertEquals(ShoppingCartMessage, prop.getProperty("ShoppingCartMessage"));
-
+		sf.assertEquals(ShoppingCartMessage, prop.getProperty("ShoppingCartMessage"));
+		sf.assertAll();
 	}
 
 	@Test
@@ -60,8 +63,9 @@ public class ShoppingCartPageTest extends TestBase {
 		orderPage.clickdeleteCartOption();
 
 		String cartEmptyConfirmation = orderPage.getDeletedMessageText();
-		Assert.assertEquals(cartEmptyConfirmation, prop.get("ConfirmationMessageText"));
-
+		sf.assertEquals(cartEmptyConfirmation, prop.get("ConfirmationMessageText"));
+		sf.assertAll();
+		
 	}
 
 }

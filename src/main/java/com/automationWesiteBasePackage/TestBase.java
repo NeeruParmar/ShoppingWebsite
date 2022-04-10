@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 
 import com.automationLogger.WebdriverEvents;
-import com.automationWebsite.Utilis.Utilis;
+import com.automationWebsite.Utils.Utilis;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 

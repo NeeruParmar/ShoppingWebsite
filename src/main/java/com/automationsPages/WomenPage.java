@@ -7,25 +7,19 @@ import org.openqa.selenium.support.PageFactory;
 import com.automationWesiteBasePackage.TestBase;
 
 public class WomenPage extends TestBase {
-	
-	public  WomenPage(){
-		PageFactory.initElements(wd, this);	
+
+	public WomenPage() {
+		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(5);
 	}
-	
-	@FindBy(css="div [class = 'product-image-container']")
+
+	@FindBy(css = "div [class = 'product-image-container']")
 	WebElement quickview;
-	
+
 	public ShoppingCartPage clickQuickView() {
 		quickview.click();
 		wd.switchTo().frame(0);
 		return new ShoppingCartPage();
 	}
-	
-	
-	
-	
-	
-		
-	
 
 }
